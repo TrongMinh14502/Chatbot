@@ -1,0 +1,95 @@
+{
+    "tag": "cancellation",
+    "patterns": ["Làm cách nào để hủy đặt phòng?", "Tôi muốn hủy đặt phòng", "Hủy phòng"],
+    "responses": ["Để hủy đặt phòng, bạn cần liên hệ với chúng tôi qua số điện thoại hoặc email. Chúng tôi sẽ hỗ trợ bạn trong quy trình hủy đặt phòng."]
+  },
+  {
+    "tag": "amenities",
+    "patterns": ["Có điều gì trong phòng không?", "Phòng có tiện nghi gì?", "Tôi cần gì khi đến phòng?"],
+    "responses": ["Mỗi phòng của chúng tôi đi kèm với tiện nghi cơ bản như TV, điều hòa nhiệt độ, và phòng tắm riêng. Ngoài ra, bạn cũng có thể yêu cầu thêm dịch vụ phụ như dịch vụ phòng, thức ăn và đồ uống từ nhà hàng của chúng tôi."]
+  },
+  {
+    "tag": "check-in",
+    "patterns": ["Làm cách nào để nhận phòng?", "Thời gian nhận phòng", "Check-in khi nào?"],
+    "responses": ["Thời gian check-in của chúng tôi là từ 14:00 trở đi. Để nhận phòng, bạn cần cung cấp giấy tờ tùy thân và thông tin đặt phòng."]
+  },
+  {
+    "tag": "checkout",
+    "patterns": ["Làm cách nào để trả phòng?", "Thời gian trả phòng", "Check-out khi nào?"],
+    "responses": ["Thời gian check-out của chúng tôi là trước 12:00 trưa. Bạn có thể thỏa thuận thêm về việc trả phòng muộn nếu cần thiết."]
+  },
+  {
+    "tag": "room_price",
+    "patterns": ["Giá phòng là bao nhiêu?", "Bao nhiêu tiền một đêm?", "Phòng có giá cả như thế nào?"],
+    "responses": ["Giá phòng sẽ phụ thuộc vào loại phòng và thời gian đặt phòng. Bạn có thể xem giá cụ thể trên trang web của chúng tôi hoặc liên hệ với chúng tôi để biết thêm chi tiết."]
+  },
+  {
+    "tag": "availability",
+    "patterns": ["Còn phòng trống không?", "Phòng còn không?", "Tôi có thể đặt phòng ngay bây giờ không?"],
+    "responses": ["Chúng tôi sẽ kiểm tra sự sẵn có cho bạn. Vui lòng cho chúng tôi biết ngày bạn muốn đặt phòng và thời gian dự kiến."]
+  },
+  {
+    "tag": "amenities_request",
+    "patterns": ["Tôi cần thêm gì?", "Có thể yêu cầu thêm dịch vụ gì?", "Tôi muốn thêm tiện nghi."],
+    "responses": ["Chúng tôi có thể cung cấp nhiều dịch vụ khác nhau như dịch vụ phòng, thức ăn và đồ uống từ nhà hàng, đỗ xe, và nhiều tiện nghi khác. Bạn muốn yêu cầu gì cụ thể?"]
+  },
+  {
+    "tag": "contact_info",
+    "patterns": ["Làm thế nào để liên hệ với bạn?", "Số điện thoại của bạn là gì?", "Email liên hệ là gì?"],
+    "responses": ["Bạn có thể liên hệ với chúng tôi qua số điện thoại: 0123-456-789 hoặc gửi email đến: info@example.com. Chúng tôi sẽ sẵn sàng hỗ trợ bạn."]
+  },
+  {
+    "tag": "special_offers",
+    "patterns": ["Có ưu đãi đặc biệt không?", "Khuyến mãi hiện tại là gì?", "Có mã giảm giá không?"],
+    "responses": ["Chúng tôi thường có các chương trình khuyến mãi đặc biệt cho khách hàng. Bạn có thể kiểm tra trang web của chúng tôi để xem các ưu đãi mới nhất hoặc liên hệ với chúng tôi để biết thêm chi tiết."]
+  },
+  {
+    "tag": "payment_methods",
+    "patterns": ["Phương thức thanh toán nào được chấp nhận?", "Tôi có thể thanh toán bằng cách nào?", "Credit card hay tiền mặt?"],
+    "responses": ["Chúng tôi chấp nhận thanh toán bằng thẻ tín dụng, thẻ ghi nợ, và tiền mặt. Bạn có thể lựa chọn phương thức thanh toán phù hợp với bạn."]
+  },
+  {
+    "tag": "group_booking",
+    "patterns": ["Tôi muốn đặt nhiều phòng cho một nhóm.", "Có ưu đãi cho đặt nhiều phòng không?", "Làm thế nào để đặt nhiều phòng?"],
+    "responses": ["Chúng tôi cung cấp dịch vụ đặt nhiều phòng cho nhóm. Bạn có thể liên hệ với chúng tôi để biết thêm chi tiết và các ưu đãi cho đặt nhiều phòng."]
+  },
+  {
+    "tag": "room_service",
+    "patterns": ["Tôi muốn dịch vụ phòng.", "Làm cách nào để gọi dịch vụ phòng?", "Có thực đơn phòng không?"],
+    "responses": ["Chúng tôi cung cấp dịch vụ phòng với nhiều tùy chọn từ thực đơn. Bạn có thể gọi dịch vụ phòng qua điện thoại hoặc thấy bảng thực đơn trong phòng."]
+  },
+  {
+    "tag": "feedback",
+    "patterns": ["Tôi muốn gửi phản hồi.", "Làm thế nào để đánh giá khách sạn?", "Có cách nào để góp ý?"],
+    "responses": ["Chúng tôi rất mong nhận được phản hồi của bạn. Bạn có thể gửi phản hồi hoặc đánh giá trực tiếp trên trang web của chúng tôi hoặc liên hệ với chúng tôi qua số điện thoại hoặc email."]
+  },
+  {
+    "tag": "local_attractions",
+    "patterns": ["Có điểm tham quan gần đây không?", "Tôi có thể tham quan gì xung quanh?", "Gợi ý điểm du lịch gần đây."],
+    "responses": ["Xung quanh khách sạn, có nhiều điểm tham quan và hoạt động thú vị. Chúng tôi có thể gợi ý những địa điểm địa phương cho bạn khám phá."]
+  },
+  {
+    "tag": "menu_options",
+    "patterns": ["Thực đơn có những món gì?", "Có món gì ngon?", "Gợi ý món ăn"],
+    "responses": ["Thực đơn của chúng tôi đa dạng với nhiều món ngon như mì pasta, sườn nướng, salad, và nhiều món tráng miệng hấp dẫn. Bạn có thể xem thực đơn trên trang web của chúng tôi hoặc tại nhà hàng của chúng tôi."]
+  },
+  {
+    "tag": "special_dietary_requests",
+    "patterns": ["Tôi có yêu cầu ăn kiêng.", "Có thực đơn dành cho người ăn chay không?", "Tôi không ăn thịt."],
+    "responses": ["Chúng tôi hiểu và chúng tôi có thực đơn phù hợp với nhiều yêu cầu ăn kiêng. Vui lòng cho chúng tôi biết về yêu cầu của bạn và chúng tôi sẽ phục vụ bạn tốt nhất."]
+  },
+  {
+    "tag": "beverages",
+    "patterns": ["Có thức uống gì trong menu?", "Thực đơn nước uống là gì?", "Có cà phê và đồ uống khác không?"],
+    "responses": ["Thực đơn nước uống của chúng tôi bao gồm cà phê, nước trái cây, nước uống có cồn, và các loại nước khác. Bạn có thể lựa chọn trong danh sách nước uống của chúng tôi."]
+  },
+  {
+    "tag": "room_service_food",
+    "patterns": ["Làm thế nào để đặt thức ăn cho phòng?", "Có thể gọi thức ăn vào phòng không?", "Thực đơn dịch vụ phòng."],
+    "responses": ["Bạn có thể đặt thức ăn cho phòng bằng cách gọi dịch vụ phòng qua điện thoại hoặc thông qua thực đơn dịch vụ phòng có sẵn trong phòng."]
+  },
+  {
+    "tag": "breakfast_options",
+    "patterns": ["Có món sáng sớm gì?", "Thực đơn sáng sớm là gì?", "Có bữa sáng miễn phí không?"],
+    "responses": ["Chúng tôi cung cấp nhiều tùy chọn bữa sáng bao gồm bữa sáng tự chọn và bữa sáng miễn phí cho khách hàng. Bạn có thể tìm hiểu thêm về thực đơn sáng sớm trên trang web của chúng tôi."]
+  }

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            background-image: url('https://helpiewp.com/wp-content/uploads/2019/09/How-to-create-an-Airbnb-like-website.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-clip: border-box;
+        }
+
+        /* CSS cho chatbox */
+        #chatbox {
+            position: fixed;
+            bottom: 20px;
+            right: 0px;
+            width: 300px;
+            border: none;
+            background-color: #d0d5d4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            transition: transform 0.1s ease-in-out;
+            border-radius: 10px;
+            max-height: 400px; /* Đặt chiều cao tối đa của chatbox */
+        }
+
+        .header-icon {
+            width: 30px; /* Điều chỉnh kích thước của biểu tượng */
+            height: 30px;
+            margin-right: 10px; /* Tạo khoảng cách giữa biểu tượng và văn bản */
+            vertical-align: middle; /* Canh giữa theo chiều dọc với văn bản */
+        }
+        .footer-icon {
+        margin-right: -11px;
+        width: 25px;
+        height: 30px;
+        margin-left: 10px; /* Tạo khoảng cách giữa biểu tượng và ô nhập tin nhắn */
+        }
+
+        /* CSS cho biểu tượng chatbox */
+        #chatbox-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            z-index: 999;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #chatbox-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        #chatbox.closed {
+            transform: translateX(100%);
+        }
+
+        #chatbox-header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: left; /* Căn trái nội dung trong header */
+            font-weight: bold;
+            text-align: center;
+            border-radius: 10px;
+            display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử */
+            align-items: center; /* Canh giữa các phần tử theo chiều dọc */
+        }
+        #chatbox-footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: right;
+            font-weight: bold;  
+            border-radius: 2px;
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung và ô input */
+            justify-content: space-between; /* Canh chỉnh giữa các phần tử */
+            position: sticky; /* Đặt vị trí là sticky */
+            bottom: 0; /* Đặt bottom thành 0 để nó nằm ở cuối cùng */
+        }
+
+        #chatbox-title {
+            font-size: 18px;
+            text-align: center;
+            padding: 25px;
+        }
+
+        #chatbox-content {
+            padding: 10px;
+            max-height: calc(100% - 60px); /* Giảm điều chỉnh chiều cao tối đa cho nội dung */
+            max-height: 300px;
+            overflow-y: auto; /* Bật cuộn nếu nội dung dài hơn */
+        }
+
+        #user-input {
+            flex-grow: 1; /* Cho phép ô input mở rộng để lấp đầy không gian còn trống */
+            width: 100%;
+            padding: 2px;
+            border: none;
+            border-top: 1px solid #ccc;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+        #toggle-chatbox {
+            background-color: #af1616;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            position: absolute;
+            top: 6px;
+            right: 0px;
+            transition: background-color 0.1s
+        }
+
+        #chatbox-messages p strong.user {
+            color: #007bff; /* Màu chữ xanh dương cho "Minh" */
+        }
+
+        #chatbox-messages p strong.chatbot {
+            color: #ff5722; /* Màu chữ cam cho "Trung tâm hỗ trợ khách hàng" */
+        }
+
+        #chatbox-messages-container{
+            overflow-y: auto;
+        }
+
+        #toggle-chatbox:hover {
+            background-color: #ff0000;
+        }
+
+        .footer-icon.hover-effect:hover {
+            /* Thay đổi màu nền hoặc áp dụng hiệu ứng sáng lên ở đây */
+            filter: brightness(1.5); /* Sáng lên 150% */
+        }
+
+        #chatbox-icon:hover {
+            /* Thay đổi màu nền hoặc áp dụng hiệu ứng sáng lên ở đây */
+            filter: brightness(1.5); /* Sáng lên 200% */
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="chatbox-icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/2504/2504926.png" alt="Chat Icon">
+    </div>
+    <div id="chatbox" class="closed">
+        <div id="chatbox-header">
+            <img src="https://cdn-icons-png.flaticon.com/128/3280/3280979.png" alt="Biểu tượng" class="header-icon">
+            <div>
+                <span id="chatbox-title">Trung tâm hỗ trợ</span>
+            </div>
+            <button id="toggle-chatbox">X</button>
+        </div>
+        <div id="chatbox-content">
+            <div id="chatbox-messages-container">
+                <div id="chatbox-messages"></div>
+            </div>
+        </div>
+        <div id="chatbox-footer">
+            <input type="text" id="user-input" placeholder="Nhập tin nhắn...">
+            <img src="https://cdn-icons-png.flaticon.com/128/5373/5373244.png" alt="Biểu tượng" class="footer-icon">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript để tương tác với chatbox
+        const chatbox = document.getElementById('chatbox');
+        const toggleButton = document.getElementById('toggle-chatbox');
+        const chatboxMessages = document.getElementById('chatbox-messages');
+        const userInput = document.getElementById('user-input');
+        const chatboxIcon = document.getElementById('chatbox-icon');
+        const sendIcon = document.querySelector('.footer-icon');
+        const messagesContainer = document.getElementById('chatbox-messages-container'); // Thêm dòng này
+
+
+        // Thêm sự kiện khi trỏ chuột vào biểu tượng footer
+        sendIcon.addEventListener('mouseenter', function() {
+            sendIcon.classList.add('hover-effect');
+        });
+
+        // Thêm sự kiện khi chuột ra khỏi biểu tượng footer
+        sendIcon.addEventListener('mouseleave', function() {
+            sendIcon.classList.remove('hover-effect');
+        });
+
+        // Thêm sự kiện click cho biểu tượng footer
+        sendIcon.addEventListener('click', function() {
+            // Lấy giá trị tin nhắn từ ô nhập tin nhắn
+            const userMessage = userInput.value;
+            
+            // Kiểm tra xem tin nhắn không rỗng
+            if (userMessage.trim() !== '') {
+                // Xóa nội dung của ô nhập tin nhắn
+                userInput.value = '';
+                
+                // Hiển thị tin nhắn người dùng trong chatbox-messages
+                chatboxMessages.innerHTML += '<p><strong class="user">Minh:</strong> ' + userMessage + '</p>';
+                
+                // Gửi tin nhắn đến máy chủ và nhận câu trả lời từ chatbot (hoặc làm bất kỳ thay đổi nào bạn muốn)
+                fetch('/get_response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'user_input=' + userMessage,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const botMessage = data.bot_response;
+                    chatboxMessages.innerHTML += '<p><strong class="chatbot">Trung tâm hỗ trợ khách hàng:</strong> ' + botMessage + '</p>';
+                    // Cuộn xuống để hiển thị tin nhắn mới nhất
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                });
+            }
+        });
+
+        // Hàm để ẩn chatbox và hiển thị biểu tượng
+        function hideChatbox() {
+            chatbox.classList.add('closed');
+            chatboxIcon.style.display = 'block'; // Hiển thị biểu tượng chatbox
+            chatboxMessages.innerHTML = ''; // Xóa nội dung chatbox
+        }
+
+        // Ẩn/hiện chatbox khi nhấn nút toggle hoặc biểu tượng chatbox
+        toggleButton.addEventListener('click', function() {
+            chatbox.classList.toggle('closed');
+            if (!chatbox.classList.contains('closed')) {
+                chatboxIcon.style.display = 'none'; // Ẩn biểu tượng chatbox khi chatbox được mở
+            } else {
+                hideChatbox(); // Gọi hàm hideChatbox() khi đóng chatbox
+            }
+        });
+
+        chatboxIcon.addEventListener('click', function() {
+            chatbox.classList.remove('closed');
+            chatboxIcon.style.display = 'none'; // Ẩn biểu tượng chatbox khi chatbox được mở
+        });
+
+        // Xử lý khi người dùng nhập và gửi tin nhắn
+        userInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const userMessage = userInput.value;
+                userInput.value = '';
+                chatboxMessages.innerHTML += '<p><strong class="user">Minh:</strong> ' + userMessage + '</p>';
+
+                // Gửi tin nhắn đến máy chủ và nhận câu trả lời từ chatbot
+                fetch('/get_response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'user_input=' + userMessage,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const botMessage = data.bot_response;
+                    chatboxMessages.innerHTML += '<p><strong class="chatbot">Trung tâm hỗ trợ khách hàng:</strong> ' + botMessage + '</p>';
+                    // Cuộn xuống để hiển thị tin nhắn mới nhất
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                });
+            }
+        });
+
+        // Thực hiện hành động hiển thị biểu tượng khi đóng chatbox
+        toggleButton.addEventListener('click', function() {
+            if (chatbox.classList.contains('closed')) {
+                showChatboxIcon(); // Hiển thị biểu tượng khi chatbox được đóng
+            }
+        });
+
+        function showChatboxIcon() {
+            chatboxIcon.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
